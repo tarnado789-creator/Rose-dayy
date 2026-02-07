@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rose Day Presentation 🌹</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(to bottom, #ff5f9e, #ff2e63);
+      color: white;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      height: 100vh;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: center;
+      animation: slide 0.8s ease;
+    }
+
+    .active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes slide {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    h1 { font-size: 2.5em; text-shadow: 0 0 15px pink; }
+    h2 { font-size: 1.6em; }
+
+    img {
+      width: 240px;
+      border-radius: 25px;
+      box-shadow: 0 0 25px pink;
+      margin: 20px 0;
+    }
+
+    .nav {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: white;
+      color: #ff2e63;
+      box-shadow: 0 0 10px white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+  <h1>🌹 HAPPY ROSE DAY 🌹</h1>
+  <h2>Ek chhota sa surprise ❤️</h2>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <h1>Ye lo meri taraf se</h1>
+  <h2>sirf aapke liye ek phool 🌹</h2>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <h1>😊</h1>
+  <img src="rose.png">
+  <h2>Ye rose + ye smile = you ❤️</h2>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <h1>Message</h1>
+  <h2>
+    Tum meri life ki sabse pyaari feeling ho.  
+    Rose Day ho ya normal day, tum special ho 💖
+  </h2>
+</div>
+
+<!-- SLIDE 5 (LAST) -->
+<div class="slide" id="lastSlide">
+  <h1>I Love You So Much ❤️</h1>
+  <h2>See You  😘</h2>
+</div>
+
+<!-- NAV BUTTONS -->
+<div class="nav" id="nav">
+  <button onclick="prev()">⬅️ Prev</button>
+  <button onclick="next()">Next ➡️</button>
+</div>
+
+<script>
+  let index = 0;
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('nav');
+
+  function show(i) {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[i].classList.add('active');
+
+    if (slides[i].id === "lastSlide") {
+      nav.style.display = "none";
+    } else {
+      nav.style.display = "flex";
+    }
+  }
+
+  function next() {
+    if (index < slides.length - 1) index++;
+    show(index);
+  }
+
+  function prev() {
+    if (index > 0) index--;
+    show(index);
+  }
+</script>
+
+</body>
+</html>
